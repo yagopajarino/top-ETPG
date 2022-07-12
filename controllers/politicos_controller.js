@@ -33,9 +33,52 @@ exports.details_get = function (req, res, next) {
 };
 
 exports.nuevo_get = function (req, res, next) {
-  res.send("Pendiente nuevo político GET");
+  res.render("politico_form", { title: "Nuevo político" });
 };
 
-exports.nuevo_post = function (req, res, next) {
-  res.send("Pendiente nuevo político POST");
-};
+exports.nuevo_post = [
+  body("nombre", "Completar nombre").trim().isLength({ min: 1 }).escape(),
+  body("apellido", "Completar apellido").trim().isLength({ min: 1 }).escape(),
+  body("image_url", "Completar url de imagen")
+    .trim()
+    .isLength({ min: 1 })
+    .isURL(),
+
+  function (req, res, next) {
+    const errors = validationResult(req);
+    let datos = {
+      nombre: req.body.nombre,
+      apellido: req.body.apellido,
+      image_url: req.body.image_url,
+      descripcion: req.body.descripcion || "",
+    };
+    let politico = new Politico(datos);
+    if (!errors.isEmpty()) {
+      res.render("Politico_form", {
+        title: "Nuevo politico",
+        politico: politico,
+        errors: errors.array(),
+      });
+      return;
+    } else {
+      Politico.findOne({ nombre: req.body.nombre }).exec(function (
+        err,
+        result
+      ) {
+        if (err) {
+          return next(err);
+        }
+        if (result) {
+          res.redirect(result.url);
+        } else {
+          politico.save(function (err) {
+            if (err) {
+              return next(err);
+            }
+            res.redirect(politico.url);
+          });
+        }
+      });
+    }
+  },
+];

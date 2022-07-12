@@ -1,0 +1,15 @@
+extends layout
+
+block content
+  h1= title
+  form(action="" method="POST" autocomplete="off")
+    input(type="text" placeholder="Nombre" name="nombre" value=(politico == undefined ? "" : politico.nombre))
+    input(type="text" placeholder="Apellido" name="apellido" value=(politico == undefined ? "" : politico.apellido))
+    textarea(placeholder="Descripción" name="descripcion" value=(politico == undefined ? "" : politico.descripcion))
+    input(type="text" placeholder="URL de imagen" name="image_url" value=(politico == undefined ? "" : politico.image_url))
+    button(action="submit") Sumbit
+
+    if errors
+        ul 
+            for error in errors 
+                li= error.msg

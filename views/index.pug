@@ -24,10 +24,13 @@ block content
 
   h2 Últimos gabinentes creados
   each gab in data 
-    div
-      each nombramiento in gab.nombramientos 
-        p= nombramiento.cargo.nombre
-        p= nombramiento.politico.name
+    .gabinete
+      - nombramientos = gab.nombramientos.sort((a,b) => a.cargo.rank - b.cargo.rank)
+      each nombramiento in nombramientos
+        .tile
+          p= nombramiento.cargo.nombre
+          img(src=nombramiento.politico.image_url)
+          p= nombramiento.politico.name
     
 
         
