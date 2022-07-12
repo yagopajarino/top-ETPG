@@ -1,0 +1,13 @@
+extends layout
+
+block content
+  h1= title
+  each gabinete in data 
+    div 
+      each nomb in gabinete.nombramientos
+        p= nomb.cargo.nombre
+        p= nomb.politico.name
+        
+        
+        
+        
