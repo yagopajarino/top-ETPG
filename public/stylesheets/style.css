@@ -4,9 +4,67 @@ body {
 }
 
 a {
-  color: #00B7FF;
+  color: #0000ff;
 }
 
 img {
-  width: 10%;
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  object-position: 100% 0;
+  border-radius: 50%;
+}
+
+.gabinete {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background-color: #f7f7f7;
+  overflow: scroll;
+  margin: 1rem 0;
+}
+
+.tile {
+  display: flex;
+  flex-direction: column;
+  margin: 1rem 0;
+  padding: 0 2rem;
+  align-items: center;
+  border-right: 1px solid #cccccc;
+}
+
+.wrap {
+  flex-wrap: wrap;
+}
+
+.tile a {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 1rem;
+}
+
+.gabinete:last-child {
+  border-right: none
+}
+
+.gabinete::-webkit-scrollbar {
+  display: none;
+}
+
+.gabinete {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.politicos {
+  display: flex;
+  background-color: #ededed;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  margin-bottom: 1rem;
+}
+
+li {
+  margin: 0.5rem 0;
 }
