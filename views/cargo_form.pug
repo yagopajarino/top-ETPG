@@ -1,0 +1,12 @@
+extends layout
+
+block content
+  h1= title
+  form(action="" method="POST" autocomplete="off")
+    input(type="text" placeholder="Nombre del cargo" name="nombre" value=(cargo == undefined ? "" : cargo.nombre))
+    button(action="submit") Sumbit
+
+    if errors
+        ul 
+            for error in errors 
+                li= error.msg
