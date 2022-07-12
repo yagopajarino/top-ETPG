@@ -1,0 +1,10 @@
+extends layout
+
+block content
+  h1= title
+  for politico in data 
+    div 
+      a(href="/politicos/" + politico._id)
+        img(src=politico.image_url)
+        span= politico.name
+  
