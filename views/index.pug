@@ -1,0 +1,34 @@
+extends layout
+
+block content
+  h1= title
+  p La política argentina pasa por su peor momento, elegí tu propio GABINETE y compartilo al mundo.
+
+  h2 Ver
+  ul 
+    li 
+      a(href="/politicos") Políticos 
+    li 
+      a(href="/cargos") Cargos 
+    li 
+      a(href="/gabinetes") Gabinetes 
+  
+  h2 Nuevo
+  ul
+    li 
+      a(href="/politicos/nuevo") Político 
+    li 
+      a(href="/cargos/nuevo") Cargo 
+    li 
+      a(href="/gabinetes/nuevo") Gabinete
+
+  h2 Últimos gabinentes creados
+  each gab in data 
+    div
+      each nombramiento in gab.nombramientos 
+        p= nombramiento.cargo.nombre
+        p= nombramiento.politico.name
+    
+
+        
+
