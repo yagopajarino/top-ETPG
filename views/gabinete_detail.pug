@@ -1,0 +1,13 @@
+extends layout
+
+block content
+  h1= title
+  .gabinete.wrap
+    each nomb in nombramientos
+      .tile
+        p= nomb.cargo.nombre
+        img(src=nomb.politico.image_url)
+        p= nomb.politico.name
+
+
+  a(href="/") Voler a inicio 

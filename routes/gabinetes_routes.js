@@ -6,5 +6,6 @@ const controller = require("../controllers/gabinetes_controller");
 router.get("/", controller.gabinetes_get);
 router.get("/nuevo", controller.nuevo_get);
 router.post("/nuevo", controller.nuevo_post);
+router.get("/:id", controller.gabinete_detail);
 
 module.exports = router;

@@ -1,0 +1,24 @@
+extends layout
+
+block content
+  h1= title
+  form(action="" method="POST" autocomplete="off")
+    select(placeholder="Politico" name="politico")
+        option(disabled selected) Seleccionar politico
+        for politico in politicos 
+            option(value=politico.name) #{politico.name}
+    select(placeholder="Cargo" name="cargo")
+        option(disabled selected) Seleccionar cargo
+        - cargos.sort()
+        for cargo in cargos
+            option(value=cargo.nombre) #{cargo.nombre}
+    button(action="submit") Sumbit
+  button +  
+
+    if errors
+        ul 
+            for error in errors 
+                li= error.msg
+
+  br
+  a(href="/") Vover a inicio 
