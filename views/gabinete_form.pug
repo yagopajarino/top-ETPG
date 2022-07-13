@@ -3,22 +3,19 @@ extends layout
 block content
   h1= title
   form(action="" method="POST" autocomplete="off")
-    select(placeholder="Politico" name="politico")
-        option(disabled selected) Seleccionar politico
-        for politico in politicos 
-            option(value=politico.name) #{politico.name}
-    select(placeholder="Cargo" name="cargo")
-        option(disabled selected) Seleccionar cargo
-        - cargos.sort()
-        for cargo in cargos
-            option(value=cargo.nombre) #{cargo.nombre}
+    - cargos.sort()
+    for cargo in cargos 
+      .cargoForm
+        label= cargo.nombre
+        select(placeholder="Politico" name="nombramiento")
+            option(disabled selected) Seleccionar politico
+            for politico in politicos 
+                option(value=(cargo._id + ";" + politico._id)) #{politico.name}
     button(action="submit") Sumbit
-  button +  
 
     if errors
         ul 
             for error in errors 
                 li= error.msg
 
-  br
-  a(href="/") Vover a inicio 
+  a(href="/") Vover
