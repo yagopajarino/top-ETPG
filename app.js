@@ -4,6 +4,8 @@ var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 var mongoose = require("mongoose");
+var compression = require("compression");
+var helmet = require("helmet");
 require("dotenv").config();
 
 var indexRouter = require("./routes/index_routes");
@@ -21,6 +23,8 @@ app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(compression());
+app.use(helmet());
 app.use(express.static(path.join(__dirname, "public")));
 
 let mongoDB = process.env.MONGODB_URI;
