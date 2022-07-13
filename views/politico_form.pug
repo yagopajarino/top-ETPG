@@ -9,6 +9,8 @@ block content
     input(type="text" placeholder="URL de imagen" name="image_url" value=(politico == undefined ? "" : politico.image_url))
     button(action="submit") Sumbit
 
+  a(href="/") Volver 
+
     if errors
         ul 
             for error in errors 

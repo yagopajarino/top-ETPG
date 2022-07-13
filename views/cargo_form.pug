@@ -6,6 +6,8 @@ block content
     input(type="text" placeholder="Nombre del cargo" name="nombre" value=(cargo == undefined ? "" : cargo.nombre))
     button(action="submit") Sumbit
 
+  a(href="/") Volver 
+
     if errors
         ul 
             for error in errors 
