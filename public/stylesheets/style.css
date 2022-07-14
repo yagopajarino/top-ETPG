@@ -44,18 +44,36 @@ img {
   border-radius: 50%;
 }
 
-.gabinete {
+.integrantes {
   display: flex;
   flex-direction: row;
   align-items: center;
   overflow: scroll;
+}
+
+.gabinete {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
   margin: 1rem 0;
+}
+
+.gabineteHead p {
+  margin: 0;
+}
+
+.gabineteHead {
+  display: flex;
+  width:  -webkit-fill-available;
+  justify-content: space-between;
+  padding: 0 2rem;
+  align-items: center;
 }
 
 .tile {
   display: flex;
   flex-direction: column;
-  margin: 1rem 0;
+  margin-bottom: 1rem;
   padding: 0 2rem;
   align-items: center;
   border-right: 1px solid #cccccc;
@@ -72,15 +90,15 @@ img {
   padding: 1rem;
 }
 
-.gabinete:last-child {
+.integrantes:last-child {
   border-right: none
 }
 
-.gabinete::-webkit-scrollbar {
+.integrantes::-webkit-scrollbar {
   display: none;
 }
 
-.gabinete {
+.integrantes {
   -ms-overflow-style: none;  /* IE and Edge */
   scrollbar-width: none;  /* Firefox */
 }
