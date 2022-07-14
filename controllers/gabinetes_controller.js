@@ -36,10 +36,12 @@ exports.gabinete_detail = function (req, res, next) {
         (a, b) => a.cargo.rank - b.cargo.rank
       );
       res.render("gabinete_detail", {
-        title: "Gabinete id: " + result.id,
+        title: "Gabinete: " + result.nombre,
         nombramientos,
         votos: result.votos,
-        creacion: result.creation,
+        url: result.url,
+        nombre: result.nombre,
+        creation: result.creation,
       });
     });
 };
@@ -86,6 +88,7 @@ exports.nuevo_post = function (req, res, next) {
           title: "Nuevo gabinete",
           politicos: results.politicos,
           cargos: results.cargos,
+          nombre: req.body.nombre,
           errors: [{ msg: "Elegir al menos un político" }],
         });
         return;
@@ -105,6 +108,7 @@ exports.nuevo_post = function (req, res, next) {
         ns.push(n);
       });
       let gabinete = new Gabinete({
+        nombre: req.body.nombre == null ? "" : req.body.nombre,
         nombramientos: ns,
         votos: 0,
         creation: new Date(),

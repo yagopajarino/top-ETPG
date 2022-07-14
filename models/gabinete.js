@@ -3,6 +3,7 @@ var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
 
 var GabineteSchema = new Schema({
+  nombre: { type: String, required: true, default: "" },
   nombramientos: [{ type: Schema.Types.ObjectId, ref: "Nombramiento" }],
   votos: { type: Number, required: true, default: 0 },
   creation: { type: Date, required: true, value: new Date() },
