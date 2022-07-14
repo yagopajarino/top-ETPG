@@ -77,10 +77,10 @@ exports.nuevo_post = [
         politico.image_url = `/images/${
           req.body.nombre + req.body.apellido + "." + ext
         }`;
-        Politico.findOne({ nombre: req.body.nombre }).exec(function (
-          err,
-          result
-        ) {
+        Politico.findOne({
+          nombre: req.body.nombre,
+          apellido: req.body.apellido,
+        }).exec(function (err, result) {
           if (err) {
             return next(err);
           }
