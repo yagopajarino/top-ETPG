@@ -4,12 +4,13 @@ block content
   h1= title
   each gabinete in data 
     div 
+      h3= gabinete.nombre
       - nombramientos = gabinete.nombramientos.sort((a,b) => a.cargo.rank - b.cargo.rank)
       ul
         each nomb in nombramientos
           li #{nomb.cargo.nombre}: #{nomb.politico.name}
-      a(href=gabinete.url) Detalles 
+      a(href=gabinete.url) Detalles
+      hr 
         
-  hr
   a(href="/") Volver a inicio         
         

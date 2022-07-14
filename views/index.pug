@@ -2,7 +2,7 @@ extends layout
 
 block content
   h1= title
-  p La política argentina pasa por su peor momento, elegí tu propio GABINETE y compartilo al mundo.
+  p La política argentina pasa por su peor momento, elegí tu propio gabinete y compartilo al mundo.
 
   .options
     .cuadro
@@ -28,13 +28,17 @@ block content
   h2 Últimos gabinentes creados
   each gab in data 
     .gabinete
-      - nombramientos = gab.nombramientos.sort((a,b) => a.cargo.rank - b.cargo.rank)
-      each nombramiento in nombramientos
-        .tile
-          p= nombramiento.cargo.nombre
-          img(src=nombramiento.politico.image_url)
-          p= nombramiento.politico.name
-    
+      .gabineteHead  
+        h3 #{gab.nombre}
+        p #{gab.creation.toLocaleDateString()}
+      .integrantes
+        - nombramientos = gab.nombramientos.sort((a,b) => a.cargo.rank - b.cargo.rank)
+        each nombramiento in nombramientos
+          .tile
+            p= nombramiento.cargo.nombre
+            img(src=nombramiento.politico.image_url)
+            p= nombramiento.politico.name
+      
 
         
 

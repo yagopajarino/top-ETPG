@@ -3,11 +3,16 @@ extends layout
 block content
   h1= title
   .gabinete.wrap
-    each nomb in nombramientos
-      .tile
-        p= nomb.cargo.nombre
-        img(src=nomb.politico.image_url)
-        p= nomb.politico.name
+    .gabineteHead 
+      h3 #{nombre}
+      p #{creation.toLocaleDateString()}
+    .integrantes
+      each nomb in nombramientos
+        .tile
+          p= nomb.cargo.nombre
+          img(src=nomb.politico.image_url)
+          p= nomb.politico.name
 
 
-  a(href="/") Voler a inicio 
+  a(href="/") Volver a inicio
+  a(href="https://twitter.com/intent/tweet?text=Este%20es%20el%20gabinete%20para%20sacar%20adelante%20el%20pa%C3%ADs&url=" + "https://aqueous-wildwood-19702.herokuapp.com" + url) Tweet 
