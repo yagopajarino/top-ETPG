@@ -13,7 +13,7 @@ exports.getIndex = function (req, res, next) {
       if (err) {
         return next(err);
       } else {
-        res.render("index", { title: "Elige tu propio GABINETE", data: gabs });
+        res.render("index", { title: "Elige Tu Propio Gabinete", data: gabs });
       }
     });
 };
